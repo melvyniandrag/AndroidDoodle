@@ -2,6 +2,7 @@ package com.ballofknives.minipaint
 
 import android.content.Context
 import android.graphics.*
+import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
@@ -9,9 +10,11 @@ import androidx.core.content.res.ResourcesCompat
 
 private const val STROKE_WIDTH = 12f // has to be float
 
-class MyCanvasView(context: Context) : View(context) {
-    private lateinit var extraCanvas: Canvas
-    private lateinit var extraBitmap: Bitmap
+class MyCanvasView @JvmOverloads constructor(
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+) : View(context, attrs, defStyleAttr) {
+    lateinit var extraCanvas: Canvas
+    lateinit var extraBitmap: Bitmap
 
     private val drawColor = ResourcesCompat.getColor(resources, R.color.colorPaint, null)
     private val backgroundColor = ResourcesCompat.getColor(resources, R.color.colorBackground, null)
